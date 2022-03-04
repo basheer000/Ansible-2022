@@ -1,0 +1,10 @@
+- name: register demo
+  hosts: all
+  tasks:
+      - name: register a variable
+        ansible.builtin.shell: cat /etc/motd
+        register: motd_contents
+
+      - name: debug
+        debug:
+          msg: "{{motd_contents}}"    
