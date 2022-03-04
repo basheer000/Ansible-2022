@@ -1,0 +1,13 @@
+- hosts: 172.31.46.212
+  become: true
+  tasks:
+    - name: installa apache server
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "Redhat"
+    - name: installa apache server on ubuntu
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"      
